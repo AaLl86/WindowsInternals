@@ -1,9 +1,9 @@
-s Internals Foundamentals training
+## Windows Internals Foundamentals training
 This repro contains all the material for the Windows Internals training which is distributed through the O'Reilly learning platform:
 
 https://www.oreilly.com/live-events/windows-internals-fundamentals/0636920095044/
 
-###Step 1 - Download the needed material
+### Step 1 - Download the needed material
 For the training experiments we will use a Virtual machine with Windows 11 installed connected with a local and remote kernel debugger.
 
 Here are the links with the needed software:
@@ -15,12 +15,12 @@ Here are the links with the needed software:
 1. PsTools: https://download.sysinternals.com/files/PSTools.zip
 
 
-###Step 2 - Set up the host environment
+### Step 2 - Set up the host environment
 The first thing that you need to do is to install the Debuggers and SkTool. You can do this by downloading the Windows SDK and by executing the Setup file. After you have finished you should have the Windbg debugger located in `C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe`.
 
 To install SkTool, just copy the correct SkTool version from this repository in your local workstation and Virtual machine that we are going to create.
 
-####Create the VM
+#### Create the VM
 Your system should have already installed the HyperV role. If, from the start menu, you do not see any "Hyper-V Manager", it means that the feature is not installed. To install it just open the Control Panel, and click on "Program and Features". On the top left corner of the window there should be a link named "Turn Windows Features on or off". Click on the link, scroll the Windows features list until you see "Hyper-V". Fully select the feature and click OK. Windows should correctly install Hyper-V hypervisor for you.
 
 Open the Start menu and search "Hyper-V Manager". Right-click on your workstation name (under "Hyper-V Manager" in the top left corner) and select "New -> Virtual Machine...". Click Next, specify a name and select "Generation 2" (important for this training), Assign then at least 4 GB of physical memory (disable Dynamic memory), since the Windows 11 setup program checks this prerequisite. Configure the Network and the Virtual disk (minimum 128 GB). At the "Installation Options" phase make sure to select "Install an operating system later". Complete the Wizard by selecting the Finish button.
@@ -41,7 +41,9 @@ Setting up the VM is relatively simple. First, you need to make sure that the ho
 
 
 md c:\windows\symbols
-srv*C:\windows\symbols*https://msdl.microsoft.com/download/symbols
+
+srv\*C:\windows\symbols*https://msdl.microsoft.com/download/symbols
+
 
 ```
 Experiment Segment 2 - Witness hardware interrupt
